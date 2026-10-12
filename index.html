@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Netflix Clone</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= LANDING PAGE ================= -->
+  <section id="landingPage" class="page">
+
+    <div class="landing-background">
+      <div class="bg1"></div>
+      <div class="bg2"></div>
+      <div class="bg3"></div>
+      <div class="bg4"></div>
+      <div class="bg5"></div>
+      <div class="bg6"></div>
+      <div class="bg7"></div>
+      <div class="bg8"></div>
+      <div class="bg9"></div>
+      <div class="bg10"></div>
+      <div class="bg11"></div>
+      <div class="bg12"></div>
+      <div class="bg13"></div>
+      <div class="bg14"></div>
+      <div class="bg15"></div>
+    </div>
+
+    <div class="landing-overlay"></div>
+
+    <header class="landing-nav">
+      <div class="logo">NETFLIX</div>
+
+      <button class="nav-signin" onclick="showSignIn()">
+        Sign In
+      </button>
+    </header>
+
+    <div class="landing-content">G5 
+
+  <p class="landing-small">Unlimited movies, TV shows, and more.</p>
+
+  <h1>Watch anywhere.<br>Cancel anytime.</h1>
+
+  <p class="landing-text">
+    Ready to watch? Choose a plan and start watching your favorite movies
+    and shows.
+  </p>
+
+  <div class="landing-actions">
+    <button class="primary-btn" onclick="showPlans()">
+      Get Started
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <button class="secondary-btn" onclick="showSignIn()">
+      Sign In
+    </button>
+</div>
+
+</div>
+  </section>
+
+
+  <!-- ================= PLANS PAGE ================= -->
+  <section id="plansPage" class="page hidden">
+
+    <div class="simple-top">
+      <div class="logo">NETFLIX</div>
+
+      <button class="text-button" onclick="showLanding()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back
+      </button>
+    </div>
+
+    <div class="center-page">
+
+      <p class="step-text">STEP 1 OF 2</p>
+
+      <h1>Choose the plan that's right for you</h1>
+
+      <p class="sub-text">
+        Watch all the movies and shows you want.
+      </p>
+
+      <div class="plans-container">
+
+        <div class="plan-card" onclick="selectPlan('Basic', 7000)">
+          <div class="plan-top">
+            <h2>Basic</h2>
+            <span>&#8358;7,000</span>
+          </div>
+
+          <p>Good video quality</p>
+          <p>Watch on 1 device</p>
+          <p>HD available</p>
+        </div>
+
+
+        <div class="plan-card popular" onclick="selectPlan('Standard', 12000)">
+          <div class="popular-label">POPULAR</div>
+
+          <div class="plan-top">
+            <h2>Standard</h2>
+            <span>&#8358;12,000</span>
+          </div>
+
+          <p>Better video quality</p>
+          <p>Watch on 2 devices</p>
+          <p>Full HD available</p>
+        </div>
+
+
+        <div class="plan-card" onclick="selectPlan('Premium', 18000)">
+          <div class="plan-top">
+            <h2>Premium</h2>
+            <span>&#8358;18,000</span>
+          </div>
+
+          <p>Best video quality</p>
+          <p>Watch on 4 devices</p>
+          <p>Ultra HD available</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= PAYMENT PAGE ================= -->
+  <section id="paymentPage" class="page hidden">
+
+    <div class="simple-top">
+      <div class="logo">NETFLIX</div>
+
+      <button class="text-button" onclick="showPlans()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back
+      </button>
+    </div>
+
+    <div class="form-page">
+
+      <p class="step-text">STEP 2 OF 2</p>
+
+      <h1>Create your account</h1>
+
+      <p class="selected-plan">
+        Selected plan:
+        <strong id="selectedPlanText">Basic &mdash; &#8358;7,000/month</strong>
+      </p>
+
+      <input
+        type="text"
+        id="paymentName"
+        placeholder="Full name"
+      >
+
+      <input
+        type="email"
+        id="paymentEmail"
+        placeholder="Email address"
+      >
+
+      <input
+        type="password"
+        id="paymentPassword"
+        placeholder="Create a password"
+      >
+
+      <input
+        type="text"
+        id="cardNumber"
+        placeholder="Card number"
+        maxlength="19"
+      >
+
+      <div class="two-inputs">
+
+        <input
+          type="text"
+          id="cardExpiry"
+          placeholder="MM/YY"
+        >
+
+        <input
+          type="text"
+          id="cardCvv"
+          placeholder="CVV"
+          maxlength="3"
+        >
+
+      </div>
+
+      <button class="big-red-btn" onclick="completePayment()">
+        Start Membership
+      </button>
+
+      <p class="demo-note">
+        Demo payment only &mdash; no real money will be charged.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SIGN IN PAGE ================= -->
+  <section id="signinPage" class="page hidden">
+
+    <div class="simple-top">
+      <div class="logo">NETFLIX</div>
+
+      <button class="text-button" onclick="showLanding()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back
+      </button>
+    </div>
+
+    <div class="signin-box">
+
+      <h1>Sign In</h1>
+
+      <input
+        type="email"
+        id="loginEmail"
+        placeholder="Email or phone number"
+      >
+
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password"
+      >
+
+      <button class="big-red-btn" onclick="login()">
+        Sign In
+      </button>
+
+      <p class="form-message" id="loginMessage"></p>
+
+      <p class="new-netflix">
+        New to Netflix?
+        <button onclick="showPlans()">Sign up now.</button>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ================= PROFILE PAGE ================= -->
+  <section id="profilesPage" class="page hidden">
+
+    <div class="profiles-top">
+      <div class="logo">NETFLIX</div>
+
+      <button class="text-button" onclick="showLanding()">
+        Sign out
+      </button>
+    </div>
+
+    <div class="profiles-center">
+
+      <h1>Who's watching?</h1>
+
+      <div id="profilesContainer" class="profiles-container"></div>
+
+      <div class="profile-actions">
+
+        <button class="manage-profile-btn" onclick="toggleManageProfiles()">
+          <i class="fa-solid fa-pen"></i>
+          Manage Profiles
+        </button>
+
+        <button class="add-profile-btn" onclick="addProfile()">
+          <i class="fa-solid fa-plus"></i>
+          Add Profile
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= MAIN NETFLIX APP ================= -->
+  <section id="mainApp" class="hidden">
+
+    <!-- NAVBAR -->
+    <nav class="main-navbar">
+
+      <div class="nav-left">
+
+        <div class="logo">NETFLIX</div>
+
+        <div class="nav-links">
+
+          <button onclick="showHome()">Home</button>
+
+          <button onclick="filterByType('show')">
+            Shows
+          </button>
+
+          <button onclick="filterByType('movie')">
+            Movies
+          </button>
+
+          <button onclick="showGames()">
+            Games
+          </button>
+
+          <button onclick="showNewPopular()">
+            New & Popular
+          </button>
+
+          <button onclick="showMyNetflix()">
+            My Netflix
+          </button>
+
+          <button onclick="toggleMoreMenu()">
+            More
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="nav-right">
+
+        <button
+          class="icon-button"
+          onclick="toggleSearch()"
+          aria-label="Search"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <button
+          class="icon-button"
+          onclick="toggleNotifications()"
+          aria-label="Notifications"
+        >
+          <i class="fa-regular fa-bell"></i>
+        </button>
+
+        <button
+          class="profile-button"
+          onclick="toggleProfileMenu()"
+        >
+          <span id="navProfileAvatar">N</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <button
+          class="icon-button"
+          onclick="toggleMainMenu()"
+          aria-label="Menu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- SEARCH BOX -->
+    <div id="searchBox" class="search-box hidden">
+
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search movies, shows, actors..."
+        oninput="performSearch()"
+      >
+
+      <button onclick="toggleSearch()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+
+    <!-- PROFILE DROPDOWN -->
+    <div id="profileMenu" class="dropdown-menu hidden">
+
+      <button onclick="switchProfile()">
+        <i class="fa-regular fa-user"></i>
+        Switch Profile
+      </button>
+
+      <button onclick="manageProfilesFromMenu()">
+        <i class="fa-solid fa-pen"></i>
+        Manage Profile
+      </button>
+
+    </div>
+
+
+    <!-- MAIN MENU -->
+    <div id="mainMenu" class="dropdown-menu main-menu hidden">
+
+      <button onclick="manageProfilesFromMenu()">
+        <i class="fa-solid fa-pen"></i>
+        Manage Profile
+      </button>
+
+      <button onclick="transferProfile()">
+        <i class="fa-solid fa-right-left"></i>
+        Transfer Profile
+      </button>
+
+      <button onclick="openAccount()">
+        <i class="fa-regular fa-user"></i>
+        Account
+      </button>
+
+      <button onclick="openHelp()">
+        <i class="fa-regular fa-circle-question"></i>
+        Help Center
+      </button>
+
+      <button onclick="signOut()">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Sign Out from Netflix
+      </button>
+
+    </div>
+
+
+    <!-- NOTIFICATIONS -->
+    <div id="notificationBox" class="notification-box hidden">
+
+      <h3>Notifications</h3>
+
+      <p>
+        <i class="fa-solid fa-bell"></i>
+        New movies and shows have been added.
+      </p>
+
+      <p>
+        <i class="fa-solid fa-film"></i>
+        Check out today's top picks.
+      </p>
+
+    </div>
+
+
+    <!-- MORE MENU -->
+    <div id="moreMenu" class="more-menu hidden">
+
+      <button onclick="filterByType('show')">TV Shows</button>
+      <button onclick="filterByType('movie')">Movies</button>
+      <button onclick="showGames()">Games</button>
+      <button onclick="showNewPopular()">New & Popular</button>
+      <button onclick="showMyNetflix()">My Netflix</button>
+
+    </div>
+
+
+    <!-- HERO -->
+    <div id="heroSection" class="hero-section">
+
+      <div class="hero-content">
+
+        <p class="hero-label">NETFLIX ORIGINAL</p>
+
+        <h1>ANIKULAPO</h1>
+
+        <div class="hero-details">
+          <span>2022</span>
+          <span>16+</span>
+          <span>2h 22m</span>
+          <span>HD</span>
+        </div>
+
+        <p>
+          A young man receives a mysterious power that changes his life
+          and puts him in the middle of an ancient royal conflict.
+        </p>
+
+        <div class="hero-buttons">
+
+          <button class="play-btn" onclick="openMovie('anikulapo')">
+            <i class="fa-solid fa-play"></i>
+            Play
+          </button>
+
+          <button
+            class="more-info-btn"
+            onclick="openMovie('anikulapo')"
+          >
+            <i class="fa-solid fa-circle-info"></i>
+            More Info
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SEARCH RESULTS -->
+    <main id="searchResults" class="search-results hidden">
+
+      <h2 id="searchTitle">Search results</h2>
+
+      <div id="searchGrid" class="search-grid"></div>
+
+    </main>
+
+
+    <!-- HOME -->
+    <main id="homeContent" class="home-content">
+
+      <div id="movieRows"></div>
+
+    </main>
+
+
+    <!-- GAMES -->
+    <main id="gamesSection" class="games-section hidden">
+
+      <div class="section-heading">
+        <p>PLAY GAMES</p>
+        <h1>Mobile games included with Netflix</h1>
+      </div>
+
+      <div class="games-grid">
+
+        <div class="game-card">
+          <div class="game-icon">
+            <i class="fa-solid fa-gamepad"></i>
+          </div>
+
+          <h3>Netflix Games</h3>
+          <p>Discover games included with your membership.</p>
+
+          <button onclick="alert('Game selected')">
+            Play
+          </button>
+        </div>
+
+
+        <div class="game-card">
+          <div class="game-icon">
+            <i class="fa-solid fa-puzzle-piece"></i>
+          </div>
+
+          <h3>Puzzle Games</h3>
+          <p>Relax with simple and challenging puzzles.</p>
+
+          <button onclick="alert('Game selected')">
+            Play
+          </button>
+        </div>
+
+
+        <div class="game-card">
+          <div class="game-icon">
+            <i class="fa-solid fa-chess-knight"></i>
+          </div>
+
+          <h3>Strategy Games</h3>
+          <p>Test your strategy and planning skills.</p>
+
+          <button onclick="alert('Game selected')">
+            Play
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+
+  <!-- ================= MOVIE INFO MODAL ================= -->
+  <div id="movieModal" class="modal hidden">
+
+    <div class="movie-modal-content">
+
+      <button class="modal-close" onclick="closeMovieModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <img id="modalPoster" src="" alt="Movie poster">
+
+      <div class="modal-details">
+
+        <h1 id="modalTitle"></h1>
+
+        <div id="modalMeta" class="modal-meta"></div>
+
+        <p id="modalDescription"></p>
+
+        <p>
+          <strong>Creator:</strong>
+          <span id="modalCreator"></span>
+        </p>
+
+        <p>
+          <strong>Cast:</strong>
+          <span id="modalCast"></span>
+        </p>
+
+        <p>
+          <strong>Genre:</strong>
+          <span id="modalGenre"></span>
+        </p>
+
+        <div class="modal-actions">
+
+          <button class="play-btn" onclick="playCurrentMovie()">
+            <i class="fa-solid fa-play"></i>
+            Play
+          </button>
+
+          <button
+            id="myListButton"
+            class="list-btn"
+            onclick="toggleCurrentMyList()"
+          >
+            <i class="fa-solid fa-plus"></i>
+            My List
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= PLAYER ================= -->
+  <div id="playerOverlay" class="player-overlay hidden">
+
+    <button class="player-close" onclick="closePlayer()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="player-container">
+
+      <iframe
+        id="moviePlayer"
+        src=""
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>
+
+      <div id="playerMessage" class="player-message hidden">
+        <i class="fa-solid fa-film"></i>
+
+        <h2>This movie isn't connected to a video yet.</h2>
+
+        <p>
+          Add a YouTube trailer link in the movie database to play it.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= INFO MODAL ================= -->
+  <div id="infoModal" class="small-modal hidden">
+
+    <div class="small-modal-content">
+
+      <button class="modal-close" onclick="closeInfoModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="infoModalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
